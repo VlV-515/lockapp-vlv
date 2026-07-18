@@ -79,7 +79,10 @@ final class LockOverlayController {
             return
         }
 
-        hide()
+        if let pid = lockedRunningApplication?.processIdentifier {
+            bypassedProcessIdentifiers.insert(pid)
+        }
+        hide(removeBypass: false)
     }
 
     private func closeBlockedApplication() {
