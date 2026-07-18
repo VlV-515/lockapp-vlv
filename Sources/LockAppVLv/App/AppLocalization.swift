@@ -44,7 +44,7 @@ struct AppCopy {
     var savePassword: String { text("Save Password", "Guardar contraseña") }
     var resetPasswords: String { text("Reset Password", "Restablecer contraseña") }
     var passwordsSaved: String { text("Password saved", "Contraseña guardada") }
-    var passwordsReset: String { text("Password reset to lockapp-vlv", "Contraseña restablecida a lockapp-vlv") }
+    var passwordsReset: String { text("Password reset to vlv", "Contraseña restablecida a vlv") }
     var mismatch: String { text("Passwords do not match", "Las contraseñas no coinciden") }
     var emptyPassword: String { text("Password cannot be empty", "La contraseña no puede estar vacía") }
     var monitorHint: String { text("Password screen appears when a protected app becomes active.", "La pantalla de contraseña aparece cuando una app protegida queda activa.") }

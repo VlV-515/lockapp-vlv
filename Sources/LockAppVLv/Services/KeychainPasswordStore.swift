@@ -21,7 +21,7 @@ enum PasswordStoreError: LocalizedError {
 
 final class KeychainPasswordStore {
     private let service = AppBranding.bundleIdentifier
-    private let defaultPassword = "lockapp-vlv"
+    private let defaultPassword = "vlv"
 
     func ensureDefaults() {
         if storedPassword(for: .master) == nil {

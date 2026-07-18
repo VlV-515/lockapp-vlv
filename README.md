@@ -22,7 +22,7 @@ The first version is inspired by AppLocker behavior: a locked menu panel, a conf
 The master password starts as:
 
 ```text
-lockapp-vlv
+vlv
 ```
 
 You can change or reset the master password from Settings.

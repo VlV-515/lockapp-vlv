@@ -16,7 +16,7 @@ Use this skill when editing LockApp-vlv source, packaging, settings, docs, or va
 
 ## Product Boundaries
 
-- Default password: `lockapp-vlv`.
+- Default password: `vlv`.
 - Use one master password for both the menu panel and the lock overlay.
 - No Touch ID, Bluetooth ID, Network ID, upgrade, or subscription features.
 - Launch at login remains configurable.
