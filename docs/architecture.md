@@ -7,7 +7,7 @@ LockApp-vlv is a Swift Package Manager executable packaged as a macOS `.app`.
 - `AppDelegate` owns lifecycle, status item, popover, settings window, app monitor, and overlay controller.
 - `AppState` bridges SwiftUI views with persisted settings.
 - `AppSettings` stores local preferences in `UserDefaults`.
-- `KeychainPasswordStore` stores menu and master passwords in Keychain.
+- `KeychainPasswordStore` stores the master password in Keychain.
 - `ApplicationMonitor` watches `NSWorkspace` activation changes and periodically checks the frontmost application.
 - `LockOverlayController` creates one high-level overlay window per screen.
 

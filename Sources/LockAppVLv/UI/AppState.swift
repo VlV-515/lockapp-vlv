@@ -28,12 +28,12 @@ final class AppState: ObservableObject {
     }
 
     func verifyMenuPassword(_ password: String) -> Bool {
-        let isValid = settings.passwordStore.verify(password, for: .menu)
+        let isValid = settings.passwordStore.verify(password, for: .master)
         if isValid {
             isMenuUnlocked = true
             statusMessage = nil
         } else {
-            statusMessage = copy.wrongPassword
+            statusMessage = nil
         }
         return isValid
     }
@@ -47,8 +47,8 @@ final class AppState: ObservableObject {
         settings.passwordStore.verify(password, for: .master)
     }
 
-    func setPassword(_ password: String, for kind: PasswordKind) throws {
-        try settings.passwordStore.set(password, for: kind)
+    func setPassword(_ password: String) throws {
+        try settings.passwordStore.set(password, for: .master)
         statusMessage = copy.passwordsSaved
     }
 

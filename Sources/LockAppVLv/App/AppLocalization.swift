@@ -35,18 +35,16 @@ struct AppCopy {
     var quit: String { text("Quit", "Salir") }
     var activate: String { text("Activate LockApp", "Activar LockApp") }
     var startAtLogin: String { text("Start at login", "Iniciar sesión automáticamente") }
-    var lockedApps: String { text("Locked Apps", "Apps bloqueadas") }
     var security: String { text("Security", "Seguridad") }
     var general: String { text("General", "General") }
     var languageLabel: String { text("Language", "Idioma") }
-    var menuPassword: String { text("Menu password", "Contraseña del menú") }
     var masterPassword: String { text("Master password", "Contraseña maestra") }
     var newPassword: String { text("New password", "Nueva contraseña") }
     var confirmPassword: String { text("Confirm password", "Confirmar contraseña") }
     var savePassword: String { text("Save Password", "Guardar contraseña") }
-    var resetPasswords: String { text("Reset Passwords", "Restablecer contraseñas") }
+    var resetPasswords: String { text("Reset Password", "Restablecer contraseña") }
     var passwordsSaved: String { text("Password saved", "Contraseña guardada") }
-    var passwordsReset: String { text("Passwords reset to lockapp-vlv", "Contraseñas restablecidas a lockapp-vlv") }
+    var passwordsReset: String { text("Password reset to lockapp-vlv", "Contraseña restablecida a lockapp-vlv") }
     var mismatch: String { text("Passwords do not match", "Las contraseñas no coinciden") }
     var emptyPassword: String { text("Password cannot be empty", "La contraseña no puede estar vacía") }
     var monitorHint: String { text("Password screen appears when a protected app becomes active.", "La pantalla de contraseña aparece cuando una app protegida queda activa.") }

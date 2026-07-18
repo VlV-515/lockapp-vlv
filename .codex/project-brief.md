@@ -5,7 +5,7 @@ LockApp-vlv is a public native macOS menu bar utility for blocking selected appl
 ## Goals
 
 - Let users choose installed macOS applications to protect.
-- Require a menu password before showing the protected app list.
+- Require the master password before showing the protected app list.
 - Show a full-screen overlay when a protected app becomes active.
 - Require a master password to remove that overlay.
 - Avoid exposing the protected app name in the overlay.
@@ -13,7 +13,7 @@ LockApp-vlv is a public native macOS menu bar utility for blocking selected appl
 - Support launch at login as a configurable setting.
 - Keep UI copy in English by default.
 - Support Spanish (Mexico) from Settings.
-- Store passwords in Keychain.
+- Store the master password in Keychain.
 
 ## Non-Goals
 

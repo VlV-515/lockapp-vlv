@@ -9,6 +9,7 @@ struct MenuPanelView: View {
     let onQuit: () -> Void
 
     @State private var password = ""
+    @State private var failedPasswordAttempts = 0
 
     var body: some View {
         let copy = appState.copy
@@ -39,19 +40,11 @@ struct MenuPanelView: View {
 
             Spacer()
 
-            if appState.isMenuUnlocked {
-                Button(action: onOpenPreferences) {
-                    Image(systemName: "gearshape")
-                }
-                .buttonStyle(.borderless)
-                .help(copy.preferences)
-
-                Button(action: onAddApplication) {
-                    Image(systemName: "plus")
-                }
-                .buttonStyle(.borderless)
-                .help(copy.addApp)
+            Button(action: onAddApplication) {
+                Image(systemName: "plus")
             }
+            .buttonStyle(.borderless)
+            .help(copy.addApp)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
@@ -65,18 +58,13 @@ struct MenuPanelView: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 240)
                 .onSubmit { submitMenuPassword() }
+                .modifier(ShakeEffect(animatableData: CGFloat(failedPasswordAttempts)))
 
             Button(copy.enter) {
                 submitMenuPassword()
             }
             .keyboardShortcut(.defaultAction)
             .frame(width: 120)
-
-            if let statusMessage = appState.statusMessage {
-                Text(statusMessage)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundStyle(.red)
-            }
 
             Spacer()
         }
@@ -85,19 +73,6 @@ struct MenuPanelView: View {
 
     private func unlockedContent(copy: AppCopy) -> some View {
         VStack(spacing: 0) {
-            Toggle(copy.activate, isOn: $appState.isLockingEnabled)
-                .toggleStyle(.checkbox)
-                .padding(.horizontal, 16)
-                .padding(.top, 12)
-
-            Toggle(copy.startAtLogin, isOn: $appState.launchAtLoginEnabled)
-                .toggleStyle(.checkbox)
-                .padding(.horizontal, 16)
-                .padding(.top, 8)
-
-            Divider()
-                .padding(.top, 12)
-
             if appState.lockedApplications.isEmpty {
                 Spacer()
                 Text(copy.noLockedApps)
@@ -152,8 +127,29 @@ struct MenuPanelView: View {
     }
 
     private func submitMenuPassword() {
-        guard appState.verifyMenuPassword(password) else { return }
+        guard appState.verifyMenuPassword(password) else {
+            password = ""
+            withAnimation(.linear(duration: 0.35)) {
+                failedPasswordAttempts += 1
+            }
+            return
+        }
         password = ""
+    }
+}
+
+private struct ShakeEffect: GeometryEffect {
+    var amount: CGFloat = 8
+    var shakesPerUnit = 3
+    var animatableData: CGFloat
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(
+            CGAffineTransform(
+                translationX: amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)),
+                y: 0
+            )
+        )
     }
 }
 

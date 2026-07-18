@@ -2,7 +2,6 @@ import Foundation
 import Security
 
 enum PasswordKind: String {
-    case menu
     case master
 }
 
@@ -25,9 +24,10 @@ final class KeychainPasswordStore {
     private let defaultPassword = "lockapp-vlv"
 
     func ensureDefaults() {
-        for kind in [PasswordKind.menu, .master] where storedPassword(for: kind) == nil {
-            try? set(defaultPassword, for: kind)
+        if storedPassword(for: .master) == nil {
+            try? set(defaultPassword, for: .master)
         }
+        deleteLegacyMenuPassword()
     }
 
     func verify(_ password: String, for kind: PasswordKind) -> Bool {
@@ -53,8 +53,8 @@ final class KeychainPasswordStore {
     }
 
     func resetDefaults() {
-        try? set(defaultPassword, for: .menu)
         try? set(defaultPassword, for: .master)
+        deleteLegacyMenuPassword()
     }
 
     private func storedPassword(for kind: PasswordKind) -> String? {
@@ -74,10 +74,18 @@ final class KeychainPasswordStore {
     }
 
     private func baseQuery(for kind: PasswordKind) -> [String: Any] {
+        baseQuery(account: kind.rawValue)
+    }
+
+    private func baseQuery(account: String) -> [String: Any] {
         [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: kind.rawValue
+            kSecAttrAccount as String: account
         ]
+    }
+
+    private func deleteLegacyMenuPassword() {
+        SecItemDelete(baseQuery(account: "menu") as CFDictionary)
     }
 }

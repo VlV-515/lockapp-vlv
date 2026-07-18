@@ -7,25 +7,25 @@ The first version is inspired by AppLocker behavior: a locked menu panel, a conf
 ## Features
 
 - Native Swift/AppKit/SwiftUI macOS app.
-- Menu bar icon with an app password before showing protected apps.
+- Menu bar icon with the master password before showing protected apps.
 - Protected application list selected from installed `.app` bundles.
 - Opaque full-screen password overlay when a protected app becomes active.
 - Master password prompt on the overlay without exposing the protected app name.
 - Shortcut to close the protected application: `Shift + Option + Command + Esc`.
 - Launch at login preference.
 - Language preference: English by default, Spanish (Mexico) available with flag labels.
-- Passwords stored in Keychain.
+- Master password stored in Keychain.
 - MIT licensed.
 
 ## Default Password
 
-Both the menu password and master password start as:
+The master password starts as:
 
 ```text
 lockapp-vlv
 ```
 
-You can change either password from Settings.
+You can change or reset the master password from Settings.
 
 ## Commands
 

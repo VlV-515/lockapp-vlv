@@ -15,17 +15,12 @@ struct PreferencesView: View {
                 .tabItem {
                     Label(copy.security, systemImage: "lock.shield")
                 }
-
-            lockedAppsTab(copy: copy)
-                .tabItem {
-                    Label(copy.lockedApps, systemImage: "app.badge")
-                }
         }
         .frame(width: 560, height: 520)
     }
 
     private func generalTab(copy: AppCopy) -> some View {
-        VStack(alignment: .leading, spacing: 18) {
+        SettingsForm {
             SettingsRow(title: copy.languageLabel) {
                 Picker("", selection: $appState.appLanguage) {
                     ForEach(AppLanguage.allCases) { language in
@@ -37,86 +32,46 @@ struct PreferencesView: View {
             }
 
             SettingsRow(title: copy.activate) {
-                Toggle("", isOn: $appState.isLockingEnabled)
+                Toggle(copy.activate, isOn: $appState.isLockingEnabled)
                     .labelsHidden()
             }
 
             SettingsRow(title: copy.startAtLogin) {
-                Toggle("", isOn: $appState.launchAtLoginEnabled)
+                Toggle(copy.startAtLogin, isOn: $appState.launchAtLoginEnabled)
                     .labelsHidden()
             }
 
-            Text(copy.monitorHint)
-                .font(.system(size: 12))
-                .foregroundStyle(.secondary)
-                .padding(.leading, 182)
+            SettingsAlignedContent {
+                Text(copy.monitorHint)
+                    .font(.system(size: 12))
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
 
             Spacer()
         }
         .toggleStyle(.checkbox)
         .padding(.top, 28)
-        .padding(.horizontal, 34)
     }
 
     private func securityTab(copy: AppCopy) -> some View {
         PasswordSettingsView(appState: appState)
-            .padding(.top, 24)
-            .padding(.horizontal, 34)
-    }
-
-    private func lockedAppsTab(copy: AppCopy) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            if appState.lockedApplications.isEmpty {
-                Spacer()
-                Text(copy.noLockedApps)
-                    .font(.system(size: 13, weight: .medium))
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity)
-                Spacer()
-            } else {
-                List {
-                    ForEach(appState.lockedApplications) { application in
-                        HStack(spacing: 10) {
-                            AppIconView(path: application.path)
-                                .frame(width: 28, height: 28)
-                            Text(application.displayName)
-                                .font(.system(size: 13, weight: .semibold))
-                            Spacer()
-                            Button {
-                                appState.removeApplication(application)
-                            } label: {
-                                Image(systemName: "trash")
-                            }
-                            .buttonStyle(.borderless)
-                            .help("Remove")
-                        }
-                    }
-                }
-                .listStyle(.inset)
-            }
-        }
-        .padding(18)
+            .padding(.top, 28)
     }
 }
 
 private struct PasswordSettingsView: View {
     @ObservedObject var appState: AppState
-    @State private var selectedKind: PasswordKind = .master
     @State private var password = ""
     @State private var confirmation = ""
     @State private var localMessage: String?
 
     var body: some View {
         let copy = appState.copy
-        VStack(alignment: .leading, spacing: 18) {
-            SettingsRow(title: copy.security) {
-                Picker("", selection: $selectedKind) {
-                    Text(copy.masterPassword).tag(PasswordKind.master)
-                    Text(copy.menuPassword).tag(PasswordKind.menu)
-                }
-                .labelsHidden()
-                .pickerStyle(.segmented)
-                .frame(width: 260)
+        SettingsForm {
+            SettingsAlignedContent {
+                Text(copy.masterPassword)
+                    .font(.system(size: 13, weight: .semibold))
             }
 
             SettingsRow(title: copy.newPassword) {
@@ -131,28 +86,28 @@ private struct PasswordSettingsView: View {
                     .frame(width: 260)
             }
 
-            HStack(spacing: 10) {
-                Spacer()
-                    .frame(width: 170)
+            SettingsAlignedContent {
+                HStack(spacing: 10) {
+                    Button(copy.savePassword) {
+                        save(copy: copy)
+                    }
+                    .keyboardShortcut(.defaultAction)
 
-                Button(copy.savePassword) {
-                    save(copy: copy)
-                }
-                .keyboardShortcut(.defaultAction)
-
-                Button(copy.resetPasswords) {
-                    appState.resetPasswords()
-                    password = ""
-                    confirmation = ""
-                    localMessage = appState.statusMessage
+                    Button(copy.resetPasswords) {
+                        appState.resetPasswords()
+                        password = ""
+                        confirmation = ""
+                        localMessage = appState.statusMessage
+                    }
                 }
             }
 
             if let message = localMessage ?? appState.statusMessage {
-                Text(message)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(message == copy.passwordsSaved || message == copy.passwordsReset ? .secondary : .red)
-                    .padding(.leading, 182)
+                SettingsAlignedContent {
+                    Text(message)
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundColor(message == copy.passwordsSaved || message == copy.passwordsReset ? .secondary : .red)
+                }
             }
 
             Spacer()
@@ -171,7 +126,7 @@ private struct PasswordSettingsView: View {
         }
 
         do {
-            try appState.setPassword(password, for: selectedKind)
+            try appState.setPassword(password)
             localMessage = copy.passwordsSaved
             password = ""
             confirmation = ""
@@ -181,20 +136,53 @@ private struct PasswordSettingsView: View {
     }
 }
 
+private struct SettingsForm<Content: View>: View {
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            content
+        }
+        .frame(width: SettingsLayout.formWidth, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+}
+
 private struct SettingsRow<Content: View>: View {
     let title: String
     @ViewBuilder let content: Content
 
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 14) {
+        HStack(alignment: .center, spacing: SettingsLayout.spacing) {
             Text(title)
                 .font(.system(size: 13, weight: .semibold))
                 .multilineTextAlignment(.trailing)
                 .lineLimit(2)
-                .frame(width: 168, alignment: .trailing)
+                .frame(width: SettingsLayout.labelWidth, alignment: .trailing)
 
             content
-                .frame(minWidth: 260, alignment: .leading)
+                .frame(width: SettingsLayout.controlWidth, alignment: .leading)
         }
     }
+}
+
+private struct SettingsAlignedContent<Content: View>: View {
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        HStack(spacing: SettingsLayout.spacing) {
+            Spacer()
+                .frame(width: SettingsLayout.labelWidth)
+
+            content
+                .frame(width: SettingsLayout.controlWidth, alignment: .leading)
+        }
+    }
+}
+
+private enum SettingsLayout {
+    static let labelWidth: CGFloat = 168
+    static let controlWidth: CGFloat = 260
+    static let spacing: CGFloat = 14
+    static let formWidth = labelWidth + spacing + controlWidth
 }
