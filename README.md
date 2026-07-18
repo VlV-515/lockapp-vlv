@@ -7,6 +7,7 @@ The first version is inspired by AppLocker behavior: a locked menu panel, a conf
 ## Features
 
 - Native Swift/AppKit/SwiftUI macOS app.
+- Custom app icon bundled in packaged builds.
 - Menu bar icon with the master password before showing protected apps.
 - Protected application list selected from installed `.app` bundles.
 - Opaque full-screen password overlay when a protected app becomes active.
@@ -31,6 +32,7 @@ You can change or reset the master password from Settings.
 
 ```bash
 swift build
+./scripts/generate-app-icon.sh
 ./scripts/package-app.sh
 open /Users/vlv/Sites/SideProjects/lockapp-vlv/dist/Lockapp-vlv.app
 ```
