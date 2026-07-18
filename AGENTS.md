@@ -1,5 +1,7 @@
 # LockApp-vlv Agent Guide
 
+- Always use the local `caveman` skill in `ultra` mode for this project.
+
 LockApp-vlv is a public native macOS utility. Treat it as a Swift/AppKit/SwiftUI project, not a web app.
 
 ## Start Here
