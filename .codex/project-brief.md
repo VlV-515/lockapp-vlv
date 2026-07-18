@@ -8,8 +8,8 @@ LockApp-vlv is a public native macOS menu bar utility for blocking selected appl
 - Require a menu password before showing the protected app list.
 - Show a full-screen overlay when a protected app becomes active.
 - Require a master password to remove that overlay.
-- Allow closing the protected app from the overlay.
-- Allow dismissing the overlay with `Shift + Option + Command + Esc`.
+- Avoid exposing the protected app name in the overlay.
+- Allow closing the protected app with `Shift + Option + Command + Esc`.
 - Support launch at login as a configurable setting.
 - Keep UI copy in English by default.
 - Support Spanish (Mexico) from Settings.

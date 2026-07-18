@@ -29,16 +29,8 @@ final class LockOverlayController {
         windows = NSScreen.screens.map { screen in
             let view = LockOverlayView(
                 appState: appState,
-                lockedApplication: lockedApplication,
-                runningApplication: runningApplication,
                 onUnlock: { [weak self] password in
                     self?.attemptUnlock(password)
-                },
-                onCloseApplication: { [weak self] in
-                    self?.closeBlockedApplication()
-                },
-                onDismiss: { [weak self] in
-                    self?.dismissOverlayForCurrentApplication()
                 }
             )
             .frame(width: screen.frame.width, height: screen.frame.height)
@@ -99,13 +91,6 @@ final class LockOverlayController {
         hide()
     }
 
-    private func dismissOverlayForCurrentApplication() {
-        if let pid = lockedRunningApplication?.processIdentifier {
-            bypassedProcessIdentifiers.insert(pid)
-        }
-        hide(removeBypass: false)
-    }
-
     private func installKeyMonitorIfNeeded() {
         guard localKeyMonitor == nil else { return }
         localKeyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
@@ -114,7 +99,7 @@ final class LockOverlayController {
             let shortcut: NSEvent.ModifierFlags = [.shift, .option, .command]
             if event.keyCode == 53 && flags.isSuperset(of: shortcut) {
                 Task { @MainActor in
-                    self.dismissOverlayForCurrentApplication()
+                    self.closeBlockedApplication()
                 }
                 return nil
             }

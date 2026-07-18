@@ -13,11 +13,9 @@ struct MenuPanelView: View {
     var body: some View {
         let copy = appState.copy
         VStack(spacing: 0) {
-            header(copy: copy)
-
-            Divider()
-
             if appState.isMenuUnlocked {
+                header(copy: copy)
+                Divider()
                 unlockedContent(copy: copy)
             } else {
                 lockedContent(copy: copy)
@@ -63,13 +61,6 @@ struct MenuPanelView: View {
         VStack(spacing: 18) {
             Spacer()
 
-            Image(nsImage: AppBranding.makeMenuBarIcon())
-                .resizable()
-                .frame(width: 42, height: 42)
-                .padding(12)
-                .background(Color(nsColor: .controlBackgroundColor))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-
             SecureField(copy.menuPasswordPlaceholder, text: $password)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 240)
@@ -88,10 +79,6 @@ struct MenuPanelView: View {
             }
 
             Spacer()
-
-            Button(copy.quit, action: onQuit)
-                .buttonStyle(.link)
-                .padding(.bottom, 12)
         }
         .padding(.horizontal, 20)
     }

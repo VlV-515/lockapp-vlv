@@ -6,6 +6,6 @@ Review priorities:
 
 - Broken build or packaging.
 - Password flow regressions.
-- Overlay behavior that traps the user without close or dismiss options.
+- Overlay behavior that leaks protected app names or offers unsafe dismiss options.
 - Settings persistence bugs.
 - Public docs drifting from supported behavior.

@@ -25,13 +25,10 @@ struct AppCopy {
     let language: AppLanguage
 
     var menuPasswordPlaceholder: String { text("Password", "Contraseña") }
-    var masterPasswordPlaceholder: String { text("Master password", "Contraseña maestra") }
+    var masterPasswordPlaceholder: String { text("Password", "Contraseña") }
     var enter: String { text("Enter", "Entrar") }
-    var unlock: String { text("Unlock", "Desbloquear") }
-    var closeApplication: String { text("Close App", "Cerrar app") }
-    var dismissOverlay: String { text("Dismiss Overlay", "Cerrar bloqueo") }
+    var unlock: String { text("OK", "OK") }
     var wrongPassword: String { text("Wrong password", "Contraseña incorrecta") }
-    var locked: String { text("is locked", "está bloqueada") }
     var noLockedApps: String { text("No locked apps yet", "Aún no hay apps bloqueadas") }
     var addApp: String { text("Add App", "Agregar app") }
     var preferences: String { text("Settings", "Configuración") }
@@ -52,12 +49,8 @@ struct AppCopy {
     var passwordsReset: String { text("Passwords reset to lockapp-vlv", "Contraseñas restablecidas a lockapp-vlv") }
     var mismatch: String { text("Passwords do not match", "Las contraseñas no coinciden") }
     var emptyPassword: String { text("Password cannot be empty", "La contraseña no puede estar vacía") }
-    var monitorHint: String { text("Lock screen appears when a protected app becomes active.", "La pantalla de bloqueo aparece cuando una app protegida queda activa.") }
-    var shortcutHint: String { text("Press Shift + Option + Command + Esc to close the overlay.", "Presiona Shift + Option + Command + Esc para cerrar el bloqueo.") }
-
-    func lockedMessage(for appName: String) -> String {
-        "\(appName) \(locked)"
-    }
+    var monitorHint: String { text("Password screen appears when a protected app becomes active.", "La pantalla de contraseña aparece cuando una app protegida queda activa.") }
+    var shortcutHint: String { text("Press Shift + Option + Command + Esc to close this app.", "Presiona Shift + Option + Command + Esc para cerrar esta app.") }
 
     private func text(_ english: String, _ spanish: String) -> String {
         language == .english ? english : spanish

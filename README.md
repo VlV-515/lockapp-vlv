@@ -9,10 +9,9 @@ The first version is inspired by AppLocker behavior: a locked menu panel, a conf
 - Native Swift/AppKit/SwiftUI macOS app.
 - Menu bar icon with an app password before showing protected apps.
 - Protected application list selected from installed `.app` bundles.
-- Full-screen lock overlay when a protected app becomes active.
-- Master password prompt on the overlay.
-- Buttons to unlock, close the protected application, or dismiss the overlay.
-- Shortcut to dismiss the overlay: `Shift + Option + Command + Esc`.
+- Opaque full-screen password overlay when a protected app becomes active.
+- Master password prompt on the overlay without exposing the protected app name.
+- Shortcut to close the protected application: `Shift + Option + Command + Esc`.
 - Launch at login preference.
 - Language preference: English by default, Spanish (Mexico) available with flag labels.
 - Passwords stored in Keychain.
@@ -50,7 +49,7 @@ Husky runs `npm run build`, which maps to `swift build`, before each commit.
 
 ## Security Notes
 
-LockApp-vlv is an overlay-based app blocker. It does not modify or sandbox other applications. A protected app can remain running behind the lock screen, and the app can close it by calling the normal macOS termination API.
+LockApp-vlv is an overlay-based app blocker. It does not modify or sandbox other applications. A protected app can remain running behind the password screen, and the app can close it by calling the normal macOS termination API through the configured keyboard shortcut.
 
 This project is suitable as a personal privacy utility and prototype. It is not a replacement for macOS account security, managed device controls, or enterprise endpoint protection.
 
