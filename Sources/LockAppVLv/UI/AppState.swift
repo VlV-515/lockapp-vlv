@@ -38,6 +38,11 @@ final class AppState: ObservableObject {
         return isValid
     }
 
+    func lockMenu() {
+        isMenuUnlocked = false
+        statusMessage = nil
+    }
+
     func verifyMasterPassword(_ password: String) -> Bool {
         settings.passwordStore.verify(password, for: .master)
     }

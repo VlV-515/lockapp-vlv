@@ -67,7 +67,9 @@ struct LockOverlayView: View {
                     .foregroundStyle(.white.opacity(0.75))
                     .padding(.bottom, 18)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private func submitUnlock() {

@@ -41,6 +41,7 @@ final class LockOverlayController {
                     self?.dismissOverlayForCurrentApplication()
                 }
             )
+            .frame(width: screen.frame.width, height: screen.frame.height)
 
             let window = LockOverlayWindow(
                 contentRect: screen.frame,
@@ -52,10 +53,18 @@ final class LockOverlayController {
             window.level = .screenSaver
             window.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]
             window.backgroundColor = .clear
+            window.hasShadow = false
             window.isOpaque = false
             window.ignoresMouseEvents = false
-            window.contentViewController = NSHostingController(rootView: view)
+            window.setFrame(screen.frame, display: true)
+
+            let hostingView = NSHostingView(rootView: view)
+            hostingView.frame = NSRect(origin: .zero, size: screen.frame.size)
+            hostingView.autoresizingMask = [.width, .height]
+            window.contentView = hostingView
+
             window.makeKeyAndOrderFront(nil)
+            window.orderFrontRegardless()
             return window
         }
 

@@ -3,7 +3,7 @@ import Combine
 import SwiftUI
 
 @MainActor
-final class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
     private let settings = AppSettings()
     private lazy var appState = AppState(settings: settings)
     private lazy var applicationMonitor = ApplicationMonitor(appState: appState)
@@ -41,6 +41,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let popover = NSPopover()
         popover.behavior = .transient
         popover.contentSize = NSSize(width: 320, height: 380)
+        popover.delegate = self
         popover.contentViewController = NSHostingController(
             rootView: MenuPanelView(
                 appState: appState,
@@ -50,6 +51,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             )
         )
         self.popover = popover
+    }
+
+    func popoverDidClose(_ notification: Notification) {
+        appState.lockMenu()
     }
 
     private func configureApplicationMonitor() {
