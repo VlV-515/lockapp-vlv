@@ -44,6 +44,6 @@ This repo uses focused local commits. Do not push unless explicitly asked.
 
 - `Sources/LockAppVLv/App`: app lifecycle, status item, packaging constants, overlay window coordination.
 - `Sources/LockAppVLv/Core`: locked app model.
-- `Sources/LockAppVLv/Services`: settings, Keychain, and app monitoring.
+- `Sources/LockAppVLv/Services`: settings, menu bar icon preference, Keychain, and app monitoring.
 - `Sources/LockAppVLv/UI`: SwiftUI panel, preferences, and overlay views.
 - `docs/architecture.md`: implementation overview.

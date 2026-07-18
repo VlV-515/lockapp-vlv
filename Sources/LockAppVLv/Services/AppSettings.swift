@@ -16,6 +16,10 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(appLanguage.rawValue, forKey: Keys.appLanguage) }
     }
 
+    @Published var menuBarIcon: MenuBarIcon {
+        didSet { defaults.set(menuBarIcon.rawValue, forKey: Keys.menuBarIcon) }
+    }
+
     @Published var lockedApplications: [LockedApplication] {
         didSet { saveLockedApplications() }
     }
@@ -32,6 +36,7 @@ final class AppSettings: ObservableObject {
         self.isLockingEnabled = defaults.object(forKey: Keys.isLockingEnabled) as? Bool ?? true
         self.launchAtLoginEnabled = defaults.object(forKey: Keys.launchAtLoginEnabled) as? Bool ?? false
         self.appLanguage = AppLanguage(rawValue: defaults.string(forKey: Keys.appLanguage) ?? "") ?? .english
+        self.menuBarIcon = MenuBarIcon(rawValue: defaults.string(forKey: Keys.menuBarIcon) ?? "") ?? .lock
         self.lockedApplications = Self.loadLockedApplications(from: defaults)
         passwordStore.ensureDefaults()
     }
@@ -66,6 +71,7 @@ final class AppSettings: ObservableObject {
         static let isLockingEnabled = "isLockingEnabled"
         static let launchAtLoginEnabled = "launchAtLoginEnabled"
         static let appLanguage = "appLanguage"
+        static let menuBarIcon = "menuBarIcon"
         static let lockedApplications = "lockedApplications"
     }
 }

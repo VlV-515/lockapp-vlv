@@ -29,7 +29,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 
     private func configureStatusItem() {
         let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-        statusItem.button?.image = AppBranding.makeMenuBarIcon()
+        statusItem.button?.image = AppBranding.makeMenuBarIcon(appState.menuBarIcon)
         statusItem.button?.imageScaling = .scaleProportionallyDown
         statusItem.button?.toolTip = AppBranding.displayName
         statusItem.button?.target = self
@@ -69,6 +69,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
             .dropFirst()
             .sink { [weak self] language in
                 self?.preferencesWindow?.title = AppCopy(language: language).preferences
+            }
+            .store(in: &cancellables)
+
+        appState.$menuBarIcon
+            .dropFirst()
+            .sink { [weak self] icon in
+                self?.statusItem?.button?.image = AppBranding.makeMenuBarIcon(icon)
             }
             .store(in: &cancellables)
     }

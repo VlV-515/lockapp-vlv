@@ -7,6 +7,7 @@ final class AppState: ObservableObject {
     @Published var isLockingEnabled: Bool
     @Published var launchAtLoginEnabled: Bool
     @Published var appLanguage: AppLanguage
+    @Published var menuBarIcon: MenuBarIcon
     @Published var lockedApplications: [LockedApplication]
     @Published var isMenuUnlocked = false
     @Published var statusMessage: String?
@@ -19,6 +20,7 @@ final class AppState: ObservableObject {
         self.isLockingEnabled = settings.isLockingEnabled
         self.launchAtLoginEnabled = settings.launchAtLoginEnabled
         self.appLanguage = settings.appLanguage
+        self.menuBarIcon = settings.menuBarIcon
         self.lockedApplications = settings.lockedApplications
         bindSettings()
     }
@@ -110,6 +112,11 @@ final class AppState: ObservableObject {
         $appLanguage
             .dropFirst()
             .sink { [settings] value in settings.appLanguage = value }
+            .store(in: &cancellables)
+
+        $menuBarIcon
+            .dropFirst()
+            .sink { [settings] value in settings.menuBarIcon = value }
             .store(in: &cancellables)
 
         $lockedApplications

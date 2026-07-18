@@ -38,6 +38,8 @@ struct AppCopy {
     var security: String { text("Security", "Seguridad") }
     var general: String { text("General", "General") }
     var languageLabel: String { text("Language", "Idioma") }
+    var menuBarIconLabel: String { text("Menu bar icon", "Icono de barra de menús") }
+    var menuBarIconHint: String { text("Pick a quieter status icon when you want LockApp-vlv to blend in.", "Elige un icono más discreto cuando quieras que LockApp-vlv pase desapercibida.") }
     var masterPassword: String { text("Master password", "Contraseña maestra") }
     var newPassword: String { text("New password", "Nueva contraseña") }
     var confirmPassword: String { text("Confirm password", "Confirmar contraseña") }
@@ -49,6 +51,17 @@ struct AppCopy {
     var emptyPassword: String { text("Password cannot be empty", "La contraseña no puede estar vacía") }
     var monitorHint: String { text("Password screen appears when a protected app becomes active.", "La pantalla de contraseña aparece cuando una app protegida queda activa.") }
     var shortcutHint: String { text("Press Shift + Option + Command + Esc to close this app.", "Presiona Shift + Option + Command + Esc para cerrar esta app.") }
+
+    func menuBarIconTitle(for icon: MenuBarIcon) -> String {
+        switch icon {
+        case .lock: text("Lock", "Candado")
+        case .document: text("Document", "Documento")
+        case .folder: text("Folder", "Carpeta")
+        case .calendar: text("Calendar", "Calendario")
+        case .grid: text("Grid", "Cuadricula")
+        case .gear: text("Gear", "Engrane")
+        }
+    }
 
     private func text(_ english: String, _ spanish: String) -> String {
         language == .english ? english : spanish

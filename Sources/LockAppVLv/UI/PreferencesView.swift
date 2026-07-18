@@ -31,6 +31,17 @@ struct PreferencesView: View {
                 .frame(width: 210)
             }
 
+            SettingsRow(title: copy.menuBarIconLabel) {
+                MenuBarIconPicker(appState: appState)
+            }
+
+            SettingsAlignedContent {
+                Text(copy.menuBarIconHint)
+                    .font(.system(size: 12))
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
             SettingsRow(title: copy.activate) {
                 Toggle(copy.activate, isOn: $appState.isLockingEnabled)
                     .labelsHidden()
@@ -57,6 +68,22 @@ struct PreferencesView: View {
     private func securityTab(copy: AppCopy) -> some View {
         PasswordSettingsView(appState: appState)
             .padding(.top, 28)
+    }
+}
+
+private struct MenuBarIconPicker: View {
+    @ObservedObject var appState: AppState
+
+    var body: some View {
+        let copy = appState.copy
+        Picker("", selection: $appState.menuBarIcon) {
+            ForEach(MenuBarIcon.allCases) { icon in
+                Label(copy.menuBarIconTitle(for: icon), systemImage: icon.systemImageName)
+                    .tag(icon)
+            }
+        }
+        .labelsHidden()
+        .frame(width: 210)
     }
 }
 

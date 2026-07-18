@@ -9,11 +9,13 @@ The first version is inspired by AppLocker behavior: a locked menu panel, a conf
 - Native Swift/AppKit/SwiftUI macOS app.
 - Custom app icon bundled in packaged builds.
 - Menu bar icon with the master password before showing protected apps.
+- Menu bar icon selector with lock, document, folder, calendar, grid, and gear options.
 - Protected application list selected from installed `.app` bundles.
 - Opaque full-screen password overlay when a protected app becomes active.
 - Master password prompt on the overlay without exposing the protected app name.
 - Shortcut to close the protected application: `Shift + Option + Command + Esc`.
 - Launch at login preference.
+- Discreet menu bar icon preference, defaulting to the lock icon.
 - Language preference: English by default, Spanish (Mexico) available with flag labels.
 - Master password stored in Keychain.
 - MIT licensed.
