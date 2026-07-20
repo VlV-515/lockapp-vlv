@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://github.com/VlV-515/lockapp-vlv">View source</a> ·
-  <a href="https://github.com/VlV-515/lockapp-vlv/releases/latest">Download</a> ·
+  <a href="https://github.com/VlV-515/lockapp-vlv/releases/tag/v1.0.0">Download v1.0.0</a> ·
   <a href="#install">Install</a> ·
   <a href="#how-it-works">How it works</a> ·
   <a href="#what-it-does-not-do">Limits</a>
@@ -75,13 +75,23 @@ No account. No subscription. No cloud sync. No heavyweight security theater. Jus
 
 ## Install
 
-### Option 1: Download the app
+### Option 1: Download the public ZIP
 
-1. Go to [GitHub Releases](https://github.com/VlV-515/lockapp-vlv/releases/latest).
-2. Download the latest `Lockapp-vlv.app` build or archive, when a release asset is available.
-3. Move `Lockapp-vlv.app` to your `Applications` folder.
-4. Open it from Finder. If macOS Gatekeeper blocks the first launch, right-click the app and choose **Open**.
-5. Click the menu bar icon, enter the default password `vlv`, and set your own password in **Settings > Security**.
+1. Go to [GitHub Release v1.0.0](https://github.com/VlV-515/lockapp-vlv/releases/tag/v1.0.0).
+2. Download `LockApp-vlv-1.0.0-macos-unsigned.zip` and `LockApp-vlv-1.0.0-macos-unsigned.zip.sha256`.
+3. Verify the checksum from the download folder:
+
+```bash
+shasum -a 256 -c LockApp-vlv-1.0.0-macos-unsigned.zip.sha256
+```
+
+4. Unzip the archive and move `Lockapp-vlv.app` to your `Applications` folder.
+5. Open it from Finder. If macOS Gatekeeper blocks the first launch, right-click the app and choose **Open**.
+6. Click the menu bar icon, enter the default password `vlv`, and set your own password in **Settings > Security**.
+
+This release is ad-hoc signed only. It is not signed with an Apple Developer ID certificate and it is not notarized by Apple. macOS Gatekeeper may warn that the app cannot be verified.
+
+SourceForge is a secondary mirror for the same ZIP and checksum: [LockApp-vlv on SourceForge](https://sourceforge.net/projects/lockapp-vlv/files/).
 
 ### Option 2: Build from source
 
@@ -203,6 +213,14 @@ Create the packaged app:
 ```bash
 ./scripts/package-app.sh
 ```
+
+Create release ZIP and checksum:
+
+```bash
+./scripts/package-release.sh 1.0.0
+```
+
+Release workflow details live in [docs/release.md](docs/release.md). SourceForge mirror steps live in [docs/sourceforge.md](docs/sourceforge.md).
 
 Husky runs `npm run build`, which maps to `swift build`, before each commit.
 
