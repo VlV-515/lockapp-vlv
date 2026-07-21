@@ -125,10 +125,11 @@ struct MenuPanelView: View {
         HStack {
             if appState.isMenuUnlocked {
                 Button(copy.preferences, action: onOpenPreferences)
+                Spacer()
+                Button(copy.about, action: onOpenAbout)
+                Spacer()
             }
 
-            Spacer()
-            Button(copy.about, action: onOpenAbout)
             Spacer()
             Button(copy.quit, action: onQuit)
         }
