@@ -1,20 +1,34 @@
 import SwiftUI
 
+enum PreferencesTab: Hashable {
+    case general
+    case security
+    case about
+}
+
 struct PreferencesView: View {
     @ObservedObject var appState: AppState
 
     var body: some View {
         let copy = appState.copy
-        TabView {
+        TabView(selection: $appState.selectedPreferencesTab) {
             generalTab(copy: copy)
                 .tabItem {
                     Label(copy.general, systemImage: "switch.2")
                 }
+                .tag(PreferencesTab.general)
 
             securityTab(copy: copy)
                 .tabItem {
                     Label(copy.security, systemImage: "lock.shield")
                 }
+                .tag(PreferencesTab.security)
+
+            AboutView(copy: copy)
+                .tabItem {
+                    Label(copy.about, systemImage: "info.circle")
+                }
+                .tag(PreferencesTab.about)
         }
         .frame(width: 560, height: 520)
     }
@@ -68,6 +82,81 @@ struct PreferencesView: View {
     private func securityTab(copy: AppCopy) -> some View {
         PasswordSettingsView(appState: appState)
             .padding(.top, 28)
+    }
+}
+
+private struct AboutView: View {
+    let copy: AppCopy
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Spacer(minLength: 28)
+
+            Image(nsImage: NSApplication.shared.applicationIconImage)
+                .resizable()
+                .interpolation(.high)
+                .frame(width: 88, height: 88)
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .shadow(color: .black.opacity(0.16), radius: 7, y: 3)
+
+            Text(AppBranding.displayName)
+                .font(.system(size: 25, weight: .medium))
+                .padding(.top, 14)
+
+            Text("\(copy.version) \(AppBranding.version)")
+                .font(.system(size: 13))
+                .foregroundStyle(.secondary)
+                .padding(.top, 4)
+
+            Text(copy.aboutSummary)
+                .font(.system(size: 13))
+                .foregroundStyle(.secondary)
+                .padding(.top, 12)
+
+            Divider()
+                .frame(width: 330)
+                .padding(.vertical, 24)
+
+            HStack(spacing: 28) {
+                AboutLink(title: copy.githubProfile, systemImage: "person.crop.circle", destination: AppBranding.githubProfileURL)
+                AboutLink(title: copy.projectRepository, systemImage: "chevron.left.forwardslash.chevron.right", destination: AppBranding.githubProjectURL)
+                AboutLink(title: copy.mitLicense, systemImage: "doc.text", destination: AppBranding.licenseURL)
+            }
+
+            Spacer(minLength: 20)
+
+            Text(copy.aboutCopyright)
+                .font(.system(size: 11))
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 24)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+private struct AboutLink: View {
+    let title: String
+    let systemImage: String
+    let destination: URL
+
+    var body: some View {
+        Link(destination: destination) {
+            VStack(spacing: 7) {
+                Image(systemName: systemImage)
+                    .font(.system(size: 19, weight: .medium))
+                    .frame(width: 46, height: 46)
+                    .overlay(Circle().stroke(Color.accentColor.opacity(0.8), lineWidth: 1))
+
+                Text(title)
+                    .font(.system(size: 11, weight: .medium))
+                    .multilineTextAlignment(.center)
+                    .frame(width: 88)
+            }
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(.primary)
     }
 }
 

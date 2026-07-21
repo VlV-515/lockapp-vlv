@@ -6,6 +6,7 @@ struct MenuPanelView: View {
     @ObservedObject var appState: AppState
     let onAddApplication: () -> Void
     let onOpenPreferences: () -> Void
+    let onOpenAbout: () -> Void
     let onQuit: () -> Void
 
     @State private var password = ""
@@ -21,6 +22,8 @@ struct MenuPanelView: View {
             } else {
                 lockedContent(copy: copy)
             }
+            Divider()
+            footer(copy: copy)
         }
         .frame(width: 320, height: 380)
         .background(Color(nsColor: .windowBackgroundColor))
@@ -115,15 +118,21 @@ struct MenuPanelView: View {
                 .listStyle(.plain)
             }
 
-            Divider()
-
-            HStack {
-                Button(copy.preferences, action: onOpenPreferences)
-                Spacer()
-                Button(copy.quit, action: onQuit)
-            }
-            .padding(12)
         }
+    }
+
+    private func footer(copy: AppCopy) -> some View {
+        HStack {
+            if appState.isMenuUnlocked {
+                Button(copy.preferences, action: onOpenPreferences)
+            }
+
+            Spacer()
+            Button(copy.about, action: onOpenAbout)
+            Spacer()
+            Button(copy.quit, action: onQuit)
+        }
+        .padding(12)
     }
 
     private func submitMenuPassword() {

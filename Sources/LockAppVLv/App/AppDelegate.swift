@@ -46,7 +46,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
             rootView: MenuPanelView(
                 appState: appState,
                 onAddApplication: { [weak self] in self?.showApplicationPicker() },
-                onOpenPreferences: { [weak self] in self?.showPreferences() },
+                onOpenPreferences: { [weak self] in self?.showPreferences(tab: .general) },
+                onOpenAbout: { [weak self] in self?.showPreferences(tab: .about) },
                 onQuit: { NSApp.terminate(nil) }
             )
         )
@@ -94,8 +95,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         }
     }
 
-    private func showPreferences() {
+    private func showPreferences(tab: PreferencesTab) {
         popover?.performClose(nil)
+        appState.selectedPreferencesTab = tab
 
         if preferencesWindow == nil {
             let window = NSWindow(

@@ -32,6 +32,7 @@ struct AppCopy {
     var noLockedApps: String { text("No locked apps yet", "Aún no hay apps bloqueadas") }
     var addApp: String { text("Add App", "Agregar app") }
     var preferences: String { text("Settings", "Configuración") }
+    var about: String { text("About", "Acerca de") }
     var quit: String { text("Quit", "Salir") }
     var activate: String { text("Activate LockApp", "Activar LockApp") }
     var startAtLogin: String { text("Start at login", "Iniciar sesión automáticamente") }
@@ -51,6 +52,12 @@ struct AppCopy {
     var emptyPassword: String { text("Password cannot be empty", "La contraseña no puede estar vacía") }
     var monitorHint: String { text("Password screen appears when a protected app becomes active.", "La pantalla de contraseña aparece cuando una app protegida queda activa.") }
     var shortcutHint: String { text("Press Shift + Option + Command + Esc to close this app.", "Presiona Shift + Option + Command + Esc para cerrar esta app.") }
+    var version: String { text("Version", "Versión") }
+    var aboutSummary: String { text("A local-first app blocker for macOS.", "Un bloqueador de apps local para macOS.") }
+    var githubProfile: String { text("GitHub Profile", "Perfil de GitHub") }
+    var projectRepository: String { text("Project Repository", "Repositorio") }
+    var mitLicense: String { text("MIT License", "Licencia MIT") }
+    var aboutCopyright: String { text("Copyright © 2026 VLV. Released under the MIT License.", "Copyright © 2026 VLV. Publicado bajo licencia MIT.") }
 
     func menuBarIconTitle(for icon: MenuBarIcon) -> String {
         switch icon {

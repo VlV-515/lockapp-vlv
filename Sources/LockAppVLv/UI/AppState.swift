@@ -9,6 +9,7 @@ final class AppState: ObservableObject {
     @Published var appLanguage: AppLanguage
     @Published var menuBarIcon: MenuBarIcon
     @Published var lockedApplications: [LockedApplication]
+    @Published var selectedPreferencesTab: PreferencesTab = .general
     @Published var isMenuUnlocked = false
     @Published var statusMessage: String?
 
