@@ -7,26 +7,26 @@ Default values:
 - Username: `vlv`.
 - Project name: `lockapp-vlv`.
 - Remote host: `frs.sourceforge.net`.
-- Remote folder: `/home/frs/project/lockapp-vlv/v1.0.0`.
+- Remote folder: `/home/frs/project/lockapp-vlv/v1.1.0`.
 
 ## Prepare Local Mirror Folder
 
 ```bash
-./scripts/prepare-sourceforge-release.sh 1.0.0
+./scripts/prepare-sourceforge-release.sh 1.1.0
 ```
 
 Expected folder:
 
 ```text
-dist/sourceforge/v1.0.0/
+dist/sourceforge/v1.1.0/
 ```
 
 Expected files:
 
 ```text
-LockApp-vlv-1.0.0-macos-unsigned.zip
-LockApp-vlv-1.0.0-macos-unsigned.zip.sha256
-README-v1.0.0.md
+LockApp-vlv-1.1.0-macos-unsigned.zip
+LockApp-vlv-1.1.0-macos-unsigned.zip.sha256
+README-v1.1.0.md
 ```
 
 ## Publish
@@ -34,7 +34,7 @@ README-v1.0.0.md
 Only run this after SourceForge SSH access is configured and the host key has been verified.
 
 ```bash
-./scripts/publish-sourceforge.sh 1.0.0 vlv lockapp-vlv
+./scripts/publish-sourceforge.sh 1.1.0 vlv lockapp-vlv
 ```
 
 The script uses `ssh` and `scp`. It does not disable `StrictHostKeyChecking`.

@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://github.com/VlV-515/lockapp-vlv">View source</a> ·
-  <a href="https://github.com/VlV-515/lockapp-vlv/releases/tag/v1.0.0">Download v1.0.0</a> ·
+  <a href="https://github.com/VlV-515/lockapp-vlv/releases/tag/v1.1.0">Download v1.1.0</a> ·
   <a href="#install">Install</a> ·
   <a href="#how-it-works">How it works</a> ·
   <a href="#what-it-does-not-do">Limits</a>
@@ -77,12 +77,12 @@ No account. No subscription. No cloud sync. No heavyweight security theater. Jus
 
 ### Option 1: Download the public ZIP
 
-1. Go to [GitHub Release v1.0.0](https://github.com/VlV-515/lockapp-vlv/releases/tag/v1.0.0).
-2. Download `LockApp-vlv-1.0.0-macos-unsigned.zip` and `LockApp-vlv-1.0.0-macos-unsigned.zip.sha256`.
+1. Go to [GitHub Release v1.1.0](https://github.com/VlV-515/lockapp-vlv/releases/tag/v1.1.0).
+2. Download `LockApp-vlv-1.1.0-macos-unsigned.zip` and `LockApp-vlv-1.1.0-macos-unsigned.zip.sha256`.
 3. Verify the checksum from the download folder:
 
 ```bash
-shasum -a 256 -c LockApp-vlv-1.0.0-macos-unsigned.zip.sha256
+shasum -a 256 -c LockApp-vlv-1.1.0-macos-unsigned.zip.sha256
 ```
 
 4. Unzip the archive and move `Lockapp-vlv.app` to your `Applications` folder.
@@ -217,7 +217,7 @@ Create the packaged app:
 Create release ZIP and checksum:
 
 ```bash
-./scripts/package-release.sh 1.0.0
+./scripts/package-release.sh 1.1.0
 ```
 
 Release workflow details live in [docs/release.md](docs/release.md). SourceForge mirror steps live in [docs/sourceforge.md](docs/sourceforge.md).

@@ -31,7 +31,7 @@ enum AppBranding {
     static let licenseURL = URL(string: "https://github.com/VlV-515/lockapp-vlv/blob/main/LICENSE")!
 
     static var version: String {
-        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0"
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.1.0"
     }
 
     static func makeMenuBarIcon(_ icon: MenuBarIcon = .lock) -> NSImage {
