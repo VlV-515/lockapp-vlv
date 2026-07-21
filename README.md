@@ -12,6 +12,7 @@
 <p align="center">
   <a href="https://github.com/VlV-515/lockapp-vlv">View source</a> ·
   <a href="https://github.com/VlV-515/lockapp-vlv/releases/tag/v1.1.0">Download v1.1.0</a> ·
+  <a href="https://sourceforge.net/projects/lockapp-vlv/files/">SourceForge mirror</a> ·
   <a href="#install">Install</a> ·
   <a href="#how-it-works">How it works</a> ·
   <a href="#what-it-does-not-do">Limits</a>
