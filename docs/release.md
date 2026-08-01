@@ -29,15 +29,15 @@ swift build
 Expected files:
 
 ```text
-dist/Lockapp vlv-1.2.0-macos-unsigned.zip
-dist/Lockapp vlv-1.2.0-macos-unsigned.zip.sha256
+dist/Lockapp-vlv-1.2.0-macos-unsigned.zip
+dist/Lockapp-vlv-1.2.0-macos-unsigned.zip.sha256
 ```
 
 Verify checksum from `dist` so the `.sha256` file remains portable:
 
 ```bash
 cd dist
-shasum -a 256 -c "Lockapp vlv-1.2.0-macos-unsigned.zip.sha256"
+shasum -a 256 -c "Lockapp-vlv-1.2.0-macos-unsigned.zip.sha256"
 ```
 
 ## Publish GitHub Release
@@ -49,8 +49,8 @@ git tag v1.2.0
 git push origin main
 git push origin v1.2.0
 gh release create v1.2.0 \
-  "dist/Lockapp vlv-1.2.0-macos-unsigned.zip" \
-  "dist/Lockapp vlv-1.2.0-macos-unsigned.zip.sha256" \
+  "dist/Lockapp-vlv-1.2.0-macos-unsigned.zip" \
+  "dist/Lockapp-vlv-1.2.0-macos-unsigned.zip.sha256" \
   --title "Lockapp vlv 1.2.0" \
   --notes-file .github/release-notes/v1.2.0.md
 ```
@@ -59,8 +59,8 @@ If the release already exists and the local assets are the intended files:
 
 ```bash
 gh release upload v1.2.0 \
-  "dist/Lockapp vlv-1.2.0-macos-unsigned.zip" \
-  "dist/Lockapp vlv-1.2.0-macos-unsigned.zip.sha256" \
+  "dist/Lockapp-vlv-1.2.0-macos-unsigned.zip" \
+  "dist/Lockapp-vlv-1.2.0-macos-unsigned.zip.sha256" \
   --clobber
 ```
 

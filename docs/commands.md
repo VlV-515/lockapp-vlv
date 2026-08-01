@@ -43,15 +43,15 @@ This app is ad-hoc signed only. It is not Developer ID signed and not notarized.
 Creates:
 
 ```text
-dist/Lockapp vlv-1.2.0-macos-unsigned.zip
-dist/Lockapp vlv-1.2.0-macos-unsigned.zip.sha256
+dist/Lockapp-vlv-1.2.0-macos-unsigned.zip
+dist/Lockapp-vlv-1.2.0-macos-unsigned.zip.sha256
 ```
 
 Verify from `dist`:
 
 ```bash
 cd dist
-shasum -a 256 -c "Lockapp vlv-1.2.0-macos-unsigned.zip.sha256"
+shasum -a 256 -c "Lockapp-vlv-1.2.0-macos-unsigned.zip.sha256"
 ```
 
 ## Prepare SourceForge Mirror

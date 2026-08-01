@@ -24,8 +24,8 @@ dist/sourceforge/v1.2.0/
 Expected files:
 
 ```text
-Lockapp vlv-1.2.0-macos-unsigned.zip
-Lockapp vlv-1.2.0-macos-unsigned.zip.sha256
+Lockapp-vlv-1.2.0-macos-unsigned.zip
+Lockapp-vlv-1.2.0-macos-unsigned.zip.sha256
 README-v1.2.0.md
 ```
 

@@ -8,7 +8,7 @@ if [[ -z "$VERSION" ]]; then
 fi
 
 APP_NAME="Lockapp vlv"
-PRODUCT_NAME="Lockapp vlv"
+PRODUCT_NAME="Lockapp-vlv"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DIST_DIR="$ROOT_DIR/dist"
 ZIP_NAME="$PRODUCT_NAME-$VERSION-macos-unsigned.zip"

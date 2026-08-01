@@ -79,11 +79,11 @@ No account. No subscription. No cloud sync. No heavyweight security theater. Jus
 ### Option 1: Download the public ZIP
 
 1. Go to [GitHub Release v1.2.0](https://github.com/VlV-515/lockapp-vlv/releases/tag/v1.2.0).
-2. Download `Lockapp vlv-1.2.0-macos-unsigned.zip` and `Lockapp vlv-1.2.0-macos-unsigned.zip.sha256`.
+2. Download `Lockapp-vlv-1.2.0-macos-unsigned.zip` and `Lockapp-vlv-1.2.0-macos-unsigned.zip.sha256`.
 3. Verify the checksum from the download folder:
 
 ```bash
-shasum -a 256 -c "Lockapp vlv-1.2.0-macos-unsigned.zip.sha256"
+shasum -a 256 -c "Lockapp-vlv-1.2.0-macos-unsigned.zip.sha256"
 ```
 
 4. Unzip the archive and move `Lockapp vlv.app` to your `Applications` folder.
