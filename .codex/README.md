@@ -1,6 +1,6 @@
-# LockApp-vlv Codex Context
+# Lockapp vlv Codex Context
 
-This folder contains local instructions for agents working on LockApp-vlv.
+This folder contains local instructions for agents working on Lockapp vlv.
 
 Recommended order:
 

@@ -40,7 +40,7 @@ struct AppCopy {
     var general: String { text("General", "General") }
     var languageLabel: String { text("Language", "Idioma") }
     var menuBarIconLabel: String { text("Menu bar icon", "Icono de barra de menús") }
-    var menuBarIconHint: String { text("Pick a quieter status icon when you want LockApp-vlv to blend in.", "Elige un icono más discreto cuando quieras que LockApp-vlv pase desapercibida.") }
+    var menuBarIconHint: String { text("Pick a quieter status icon when you want Lockapp vlv to blend in.", "Elige un icono más discreto cuando quieras que Lockapp vlv pase desapercibida.") }
     var masterPassword: String { text("Master password", "Contraseña maestra") }
     var newPassword: String { text("New password", "Nueva contraseña") }
     var confirmPassword: String { text("Confirm password", "Confirmar contraseña") }

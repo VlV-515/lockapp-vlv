@@ -23,8 +23,8 @@ enum MenuBarIcon: String, CaseIterable, Identifiable, Codable {
 }
 
 enum AppBranding {
-    static let displayName = "LockApp-vlv"
-    static let executableName = "Lockapp-vlv"
+    static let displayName = "Lockapp vlv"
+    static let executableName = "Lockapp vlv"
     static let bundleIdentifier = "dev.vlv.lockappvlv"
     static let githubProfileURL = URL(string: "https://github.com/VlV-515")!
     static let githubProjectURL = URL(string: "https://github.com/VlV-515/lockapp-vlv")!

@@ -1,6 +1,6 @@
 # Release Workflow
 
-LockApp-vlv public releases use GitHub Releases as the primary channel.
+Lockapp vlv public releases use GitHub Releases as the primary channel.
 
 This project currently uses a free Apple Developer account. Release ZIPs are ad-hoc signed only, not Developer ID signed, and not notarized. Public copy must state that macOS Gatekeeper can show a warning.
 
@@ -29,15 +29,15 @@ swift build
 Expected files:
 
 ```text
-dist/LockApp-vlv-1.1.0-macos-unsigned.zip
-dist/LockApp-vlv-1.1.0-macos-unsigned.zip.sha256
+dist/Lockapp vlv-1.1.0-macos-unsigned.zip
+dist/Lockapp vlv-1.1.0-macos-unsigned.zip.sha256
 ```
 
 Verify checksum from `dist` so the `.sha256` file remains portable:
 
 ```bash
 cd dist
-shasum -a 256 -c LockApp-vlv-1.1.0-macos-unsigned.zip.sha256
+shasum -a 256 -c "Lockapp vlv-1.1.0-macos-unsigned.zip.sha256"
 ```
 
 ## Publish GitHub Release
@@ -49,9 +49,9 @@ git tag v1.1.0
 git push origin main
 git push origin v1.1.0
 gh release create v1.1.0 \
-  dist/LockApp-vlv-1.1.0-macos-unsigned.zip \
-  dist/LockApp-vlv-1.1.0-macos-unsigned.zip.sha256 \
-  --title "LockApp-vlv 1.1.0" \
+  "dist/Lockapp vlv-1.1.0-macos-unsigned.zip" \
+  "dist/Lockapp vlv-1.1.0-macos-unsigned.zip.sha256" \
+  --title "Lockapp vlv 1.1.0" \
   --notes-file .github/release-notes/v1.1.0.md
 ```
 
@@ -59,8 +59,8 @@ If the release already exists and the local assets are the intended files:
 
 ```bash
 gh release upload v1.1.0 \
-  dist/LockApp-vlv-1.1.0-macos-unsigned.zip \
-  dist/LockApp-vlv-1.1.0-macos-unsigned.zip.sha256 \
+  "dist/Lockapp vlv-1.1.0-macos-unsigned.zip" \
+  "dist/Lockapp vlv-1.1.0-macos-unsigned.zip.sha256" \
   --clobber
 ```
 

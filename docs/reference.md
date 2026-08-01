@@ -10,7 +10,7 @@ Reference behavior used for this project:
 - Per-app protection.
 - Overlay-style lock screen when a protected app is opened.
 - Preference surface for password and launch behavior.
-- Custom app icon inspired by the reference product's simple white tile plus red passcode-lock visual language, implemented as original LockApp-vlv artwork.
+- Custom app icon inspired by the reference product's simple white tile plus red passcode-lock visual language, implemented as original Lockapp vlv artwork.
 - Discreet selectable menu bar icons so the utility can appear as a generic document, folder, calendar, grid, or settings item while preserving the default lock icon.
 
 Intentionally excluded:

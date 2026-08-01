@@ -1,6 +1,6 @@
 # SourceForge Mirror Workflow
 
-SourceForge is a secondary mirror for LockApp-vlv release assets. GitHub Releases remains the primary public download channel.
+SourceForge is a secondary mirror for Lockapp vlv release assets. GitHub Releases remains the primary public download channel.
 
 Default values:
 
@@ -24,8 +24,8 @@ dist/sourceforge/v1.1.0/
 Expected files:
 
 ```text
-LockApp-vlv-1.1.0-macos-unsigned.zip
-LockApp-vlv-1.1.0-macos-unsigned.zip.sha256
+Lockapp vlv-1.1.0-macos-unsigned.zip
+Lockapp vlv-1.1.0-macos-unsigned.zip.sha256
 README-v1.1.0.md
 ```
 

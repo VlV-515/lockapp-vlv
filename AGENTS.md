@@ -1,8 +1,8 @@
-# LockApp-vlv Agent Guide
+# Lockapp vlv Agent Guide
 
 - Always use the local `caveman` skill in `ultra` mode for this project.
 
-LockApp-vlv is a public native macOS utility. Treat it as a Swift/AppKit/SwiftUI project, not a web app.
+Lockapp vlv is a public native macOS utility. Treat it as a Swift/AppKit/SwiftUI project, not a web app.
 
 ## Start Here
 
@@ -24,8 +24,8 @@ LockApp-vlv is a public native macOS utility. Treat it as a Swift/AppKit/SwiftUI
 ## Commands
 
 - `swift build`: compile debug build and validate source changes.
-- `./scripts/package-app.sh`: create `dist/Lockapp-vlv.app` with a release build and ad-hoc signing.
-- `open /Users/vlv/Sites/SideProjects/lockapp-vlv/dist/Lockapp-vlv.app`: launch packaged app only when explicitly requested.
+- `./scripts/package-app.sh`: create `dist/Lockapp vlv.app` with a release build and ad-hoc signing.
+- `open "/Users/vlv/Sites/SideProjects/lockapp-vlv/dist/Lockapp vlv.app"`: launch packaged app only when explicitly requested.
 
 Full command reference: `docs/commands.md`
 

@@ -1,6 +1,6 @@
-# LockApp-vlv Project Brief
+# Lockapp vlv Project Brief
 
-LockApp-vlv is a public native macOS menu bar utility for blocking selected applications behind an app-controlled password overlay.
+Lockapp vlv is a public native macOS menu bar utility for blocking selected applications behind an app-controlled password overlay.
 
 ## Goals
 
@@ -28,10 +28,10 @@ LockApp-vlv is a public native macOS menu bar utility for blocking selected appl
 
 ## Current Implementation
 
-- SwiftPM macOS executable named `Lockapp-vlv`.
-- Packaged app display name `LockApp-vlv`.
+- SwiftPM macOS executable named `Lockapp vlv`.
+- Packaged app display name `Lockapp vlv`.
 - Menu bar accessory app.
 - Selectable template menu bar icon, defaulting to the lock icon.
 - SwiftUI popover and settings window.
 - AppKit full-screen overlay windows.
-- `scripts/package-app.sh` creates `dist/Lockapp-vlv.app`.
+- `scripts/package-app.sh` creates `dist/Lockapp vlv.app`.

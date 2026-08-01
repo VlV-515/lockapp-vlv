@@ -6,4 +6,4 @@
 - Use `NSWorkspace` to observe frontmost app changes.
 - Use Keychain for passwords.
 - Do not require Xcode project files unless a future feature needs entitlements or signing configuration.
-- Do not run `open .../Lockapp-vlv.app` unless explicitly requested.
+- Do not run `open .../Lockapp vlv.app` unless explicitly requested.

@@ -9,7 +9,7 @@ if [[ -z "$VERSION" ]]; then
   exit 64
 fi
 
-PRODUCT_NAME="LockApp-vlv"
+PRODUCT_NAME="Lockapp vlv"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SOURCEFORGE_DIR="$ROOT_DIR/dist/sourceforge/v$VERSION"
 ZIP_NAME="$PRODUCT_NAME-$VERSION-macos-unsigned.zip"

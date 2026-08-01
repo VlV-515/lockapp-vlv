@@ -27,7 +27,7 @@ Renders `Resources/AppIcon.png` and `Resources/AppIcon.icns` from the Swift draw
 Creates and ad-hoc signs:
 
 ```text
-dist/Lockapp-vlv.app
+dist/Lockapp vlv.app
 ```
 
 The packaging step copies `Resources/AppIcon.icns` into the app bundle and declares it with `CFBundleIconFile`.
@@ -43,15 +43,15 @@ This app is ad-hoc signed only. It is not Developer ID signed and not notarized.
 Creates:
 
 ```text
-dist/LockApp-vlv-1.1.0-macos-unsigned.zip
-dist/LockApp-vlv-1.1.0-macos-unsigned.zip.sha256
+dist/Lockapp vlv-1.1.0-macos-unsigned.zip
+dist/Lockapp vlv-1.1.0-macos-unsigned.zip.sha256
 ```
 
 Verify from `dist`:
 
 ```bash
 cd dist
-shasum -a 256 -c LockApp-vlv-1.1.0-macos-unsigned.zip.sha256
+shasum -a 256 -c "Lockapp vlv-1.1.0-macos-unsigned.zip.sha256"
 ```
 
 ## Prepare SourceForge Mirror
@@ -73,7 +73,7 @@ Requires working SourceForge SSH access. The script keeps normal SSH host-key ve
 ## Open Packaged App
 
 ```bash
-open /Users/vlv/Sites/SideProjects/lockapp-vlv/dist/Lockapp-vlv.app
+open "/Users/vlv/Sites/SideProjects/lockapp-vlv/dist/Lockapp vlv.app"
 ```
 
 This launches the GUI app. Agents should only run it when explicitly asked.

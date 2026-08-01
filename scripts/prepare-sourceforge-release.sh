@@ -7,7 +7,7 @@ if [[ -z "$VERSION" ]]; then
   exit 64
 fi
 
-PRODUCT_NAME="LockApp-vlv"
+PRODUCT_NAME="Lockapp vlv"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DIST_DIR="$ROOT_DIR/dist"
 SOURCEFORGE_DIR="$DIST_DIR/sourceforge/v$VERSION"

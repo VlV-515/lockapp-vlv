@@ -2,12 +2,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "lockapp-vlv",
+    name: "Lockapp vlv",
     platforms: [
         .macOS(.v13)
     ],
     products: [
-        .executable(name: "Lockapp-vlv", targets: ["LockAppVLv"])
+        .executable(name: "Lockapp vlv", targets: ["LockAppVLv"])
     ],
     targets: [
         .executableTarget(

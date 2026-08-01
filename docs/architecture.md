@@ -1,6 +1,6 @@
 # Architecture
 
-LockApp-vlv is a Swift Package Manager executable packaged as a macOS `.app`.
+Lockapp vlv is a Swift Package Manager executable packaged as a macOS `.app`.
 
 ## Runtime Shape
 

@@ -1,9 +1,9 @@
 ---
 name: lockapp-vlv-development
-description: Build and maintain the native macOS LockApp-vlv app.
+description: Build and maintain the native macOS Lockapp vlv app.
 ---
 
-Use this skill when editing LockApp-vlv source, packaging, settings, docs, or validation.
+Use this skill when editing Lockapp vlv source, packaging, settings, docs, or validation.
 
 ## Workflow
 
