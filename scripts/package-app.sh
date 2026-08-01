@@ -3,7 +3,7 @@ set -euo pipefail
 
 APP_NAME="Lockapp vlv"
 DISPLAY_NAME="Lockapp vlv"
-VERSION="${1:-1.1.0}"
+VERSION="${1:-1.2.0}"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP_DIR="$ROOT_DIR/dist/$APP_NAME.app"
 CONTENTS_DIR="$APP_DIR/Contents"
